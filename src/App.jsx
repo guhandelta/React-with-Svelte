@@ -1,6 +1,8 @@
 import { useState, useRef, useLayoutEffect } from 'react'
 import Hello from './Hello.svelte'
 
+import './index.css'
+
 function App() {
   const [count, setCount] = useState(0);
   const svelteRef = useRef(0);
@@ -27,7 +29,7 @@ function App() {
       <div>
         {/*Div to mount the Svelte component*/}
         <div ref={svelteRef}></div>
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button className='btn btn-success' onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
       </div>
