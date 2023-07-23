@@ -1,7 +1,9 @@
-import { useState, useRef, useLayoutEffect } from 'react'
+import { useRef, useLayoutEffect } from 'react'
 import Hello from './Hello.svelte'
 
+
 import './index.css'
+import useStore from './store';
 /* Svelte wrapper fn() to make passing props, more generic and, to get a Svelte component aas prop and convert it into a React component and execute all the hooks, (i.e.) useLayoutEffect and useRef to mount the component and pass the props to the Svelte component */
 function SvelteWrapper(Component){
   return (props) => {
@@ -33,7 +35,8 @@ function SvelteWrapper(Component){
 const SvelteHello = SvelteWrapper(Hello);
 
 function App() {
-  const [count, setCount] = useState(0);
+  // Replaced useState with a Global store
+  const {count, increment } = useStore();
 
   return (
     <>
@@ -41,9 +44,9 @@ function App() {
         {/*Svelte component*/}
         <SvelteHello 
           extraText="Props from React passed down to the Svelte"
-          onClick={() => setCount(count => count + 1)}
+          onClick={increment}
         />
-        <button className='btn btn-success' onClick={() => setCount((count) => count + 1)}>
+        <button className='btn btn-success' onClick={increment}>
           count is {count}
         </button>
       </div>
