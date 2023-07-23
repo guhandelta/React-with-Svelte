@@ -20,7 +20,13 @@ function App() {
     }
     // Create a Hello component
     new Hello({
-      target: svelteRef.current
+      target: svelteRef.current,
+      props:{
+        // Props to the Svelte Component
+        extraText:'Wassup from React!',
+        // Callback() as Props to the Svelte Component
+        onClick: () => alert("Got a click for Svelte from React")
+      }
     })
   },[]);
 
