@@ -1,3 +1,3 @@
 <div>
-    Hello from Svelte
+    Hello from Svelte Component
 </div>
