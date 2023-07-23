@@ -12,6 +12,10 @@ function App() {
   
   */
   useLayoutEffect(() => {
+    /*If there is 1st child remove it, and keep on doing it till there are no children left*/
+    while(svelteRef.current?.firstChild){
+      svelteRef.current?.firstChild?.remove();
+    }
     // Create a Hello component
     new Hello({
       target: svelteRef.current
